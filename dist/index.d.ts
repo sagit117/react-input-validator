@@ -1,3 +1,18 @@
+import * as React from "react";
+
+export interface IPropsInputin {
+    title: string | JSX.Element
+    placeholder: string
+    type: string
+    value: string | number
+    onChange: React.Dispatch<any>
+    validate?: IValidateDataItem
+    validator?: Validator
+    validateExec?: boolean
+}
+
+export declare class Inputin extends React.Component<IPropsInputin, any> { }
+
 export interface IValidateDataItem {
     value: string
     methods: Function[]
@@ -6,14 +21,14 @@ export interface IValidateDataItem {
 
 export interface IMethods {
     required(value: string | number): boolean,
-    minLength(length: number): boolean,
-    maxLength(length: number): boolean
+    minLength(length: number): Function,
+    maxLength(length: number): Function
 }
 
 /**
  * Класс валидатор
  */
-export default class Validator {
+export class Validator {
     public static methods: IMethods
 
     private data: IValidateDataItem[]
@@ -31,3 +46,4 @@ export default class Validator {
      */
     public validateExec(data: IValidateDataItem): boolean
 }
+
