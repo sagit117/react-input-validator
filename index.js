@@ -1,4 +1,5 @@
-'use strict'
+'use strict';
+import Inputin from "./src/Inputin";
+import Validator from "./src/validate";
 
-module.exports = require('./src/Inputin');
-module.exports = require('./src/validate');
+export { Inputin, Validator }

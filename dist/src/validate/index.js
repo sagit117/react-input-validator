@@ -1,6 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-class Validator {
+export default class Validator {
     constructor(data) {
         this.data = [];
         this.data = data;
@@ -18,7 +16,6 @@ class Validator {
         return data.isValid;
     }
 }
-exports.default = Validator;
 Validator.methods = {
     required(value) {
         return !!value;
