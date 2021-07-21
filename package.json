@@ -1,6 +1,6 @@
 {
-  "name": "react-input-validator",
-  "version": "1.0.0",
+  "name": "react-inputin-validator",
+  "version": "1.0.02",
   "description": "Валидатор полей ввода для реакт приложения",
   "author": "Pavel Aksenov <sagit117@gmail.com>",
   "main": "dist/src/index.js",
@@ -9,12 +9,17 @@
     "build": "tsc -m commonjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sagit117/react-input-validator"
+  },
   "keywords": [
     "react",
     "validator",
     "input"
   ],
-  "license": "ISC",
+  "files": ["dist"],
+  "private": false,
   "dependencies": {
     "react": "^17.0.2"
   },
