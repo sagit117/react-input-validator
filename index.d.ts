@@ -20,9 +20,9 @@ export interface IValidateDataItem {
 }
 
 export interface IMethods {
-    required(value: string | number): boolean,
-    minLength(length: number): Function,
-    maxLength(length: number): Function
+    required(value: string | number): boolean,  // поле обязательное для заполнение
+    minLength(length: number): Function,        // минимальная длина поля
+    maxLength(length: number): Function         // максимальная длина поля
 }
 
 /**
