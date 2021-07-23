@@ -26,4 +26,7 @@ Validator.methods = {
     maxLength(length) {
         return (value) => value.length <= length;
     },
+    setIsValid(isValid) {
+        return isValid;
+    }
 };

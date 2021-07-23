@@ -18,6 +18,9 @@ export default class Validator {
         maxLength(length: number) {
             return (value: string) => value.length <= length
         },
+        setIsValid(isValid: boolean) {
+            return isValid
+        }
     }
 
     private data: IValidateDataItem[] = []
