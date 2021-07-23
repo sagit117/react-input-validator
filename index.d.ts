@@ -9,6 +9,7 @@ export interface IPropsInputin {
     validate?: IValidateDataItem
     validator?: Validator
     validateExec?: boolean
+    onKeyPress?: React.KeyboardEventHandler<HTMLInputElement>
 }
 
 export declare class Inputin extends React.Component<IPropsInputin, any> { }
