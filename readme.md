@@ -19,6 +19,9 @@ export default function LoginPage() {
 
     const [validateExec, setValidateExec] = useState(false) // флаг для общей валидации
 
+    /**
+     * Объект для валидации
+     */
     const validateData: IValidateDataItem[] = [
         {
             value: email,
@@ -48,6 +51,14 @@ export default function LoginPage() {
         setValidateExec(true)
     }
 
+    /**
+     * Обработчки нажатия кнопки
+     * @param event
+     */
+    function keyPressHandler(event: React.KeyboardEvent) {
+        if (event.key === 'Enter') entryHandler()
+    }
+
     return (
         <div className="container-fluid d-flex align-items-center justify-content-center">
             <div className="form-login p-3 rounded mt-5 d-flex flex-column col-sm-12 col-12 col-md-6 col-lg-4">
@@ -61,6 +72,7 @@ export default function LoginPage() {
                     validate={validateData[0]}
                     validator={Validator}
                     validateExec={validateExec}
+                    onKeyPress={keyPressHandler}
                 />
                 <Inputin
                     type="password"
@@ -71,6 +83,7 @@ export default function LoginPage() {
                     validate={validateData[1]}
                     validator={Validator}
                     validateExec={validateExec}
+                    onKeyPress={keyPressHandler}
                 />
 
                 <div className="form-login--btn mt-2 d-flex">
