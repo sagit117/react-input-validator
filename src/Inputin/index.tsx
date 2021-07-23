@@ -10,6 +10,7 @@ interface IPropsInputin {
     validate?: IValidateDataItem
     validator?: Validator
     validateExec?: boolean
+    onKeyPress?: React.KeyboardEventHandler<HTMLInputElement>
 }
 
 /**
@@ -22,6 +23,7 @@ interface IPropsInputin {
  * @param validate      - объект валидации
  * @param validator     - инстанс класса валидации
  * @param validateExec  - флаг, который определяет был ли из вне запрос валидации
+ * @param onKeyPress    - обработчик нажатия кнопки
  * @constructor
  */
 export default function Inputin({
@@ -33,6 +35,7 @@ export default function Inputin({
     validate,
     validator,
     validateExec,
+    onKeyPress
 }: IPropsInputin) {
     const [isValid, setIsValid] = useState<boolean>(false)
     const [firstFocus, setFirstFocus] = useState<boolean>(false) // флаг отвечает за потерю фокуса
@@ -94,6 +97,7 @@ export default function Inputin({
                 value={value}
                 onChange={changeInput}
                 onBlur={onBlurHandler}
+                onKeyPress={onKeyPress}
             />
         </div>
     )
