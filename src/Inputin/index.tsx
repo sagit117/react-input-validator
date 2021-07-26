@@ -40,19 +40,8 @@ export default function Inputin({
     const [isValid, setIsValid] = useState<boolean>(false)
     const [firstFocus, setFirstFocus] = useState<boolean>(false) // флаг отвечает за потерю фокуса
 
-    // const [validData, setValidData] = useState<IValidateDataItem | null>(
-    //     validate || null
-    // ) // для отслеживания изменений в поле ввода
-
     function changeInput(e: ChangeEvent<HTMLInputElement>) {
         onChange(e.target.value)
-
-        // if (validate) {
-        //     Object.assign(validate, { value: e.target.value })
-        //     setValidData({ ...validate })
-        //
-        //     firstFocus && setIsValid(!!validator?.validateExec(validate))
-        // }
     }
 
     /**
