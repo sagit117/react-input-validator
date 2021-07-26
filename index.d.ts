@@ -21,11 +21,12 @@ export interface IValidateDataItem {
 }
 
 export interface IMethods {
-    required(value: string | number): boolean   // поле обязательное для заполнение
-    minLength(length: number): Function         // минимальная длина поля
-    maxLength(length: number): Function         // максимальная длина поля
-    setIsValid(isValid: boolean): boolean       // принудительная валидация
-    isEmail(value: string): boolean             // проверка на email
+    required(value: string | number): boolean       // поле обязательное для заполнение
+    minLength(length: number): Function             // минимальная длина поля
+    maxLength(length: number): Function             // максимальная длина поля
+    setIsValid(isValid: boolean): boolean           // принудительная валидация
+    isEmail(value: string): boolean                 // проверка на email
+    isEqual(valueEqual: string | number): Function  // проверка на совпадение 2х значений
 }
 
 /**
