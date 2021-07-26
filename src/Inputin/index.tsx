@@ -40,19 +40,19 @@ export default function Inputin({
     const [isValid, setIsValid] = useState<boolean>(false)
     const [firstFocus, setFirstFocus] = useState<boolean>(false) // флаг отвечает за потерю фокуса
 
-    const [validData, setValidData] = useState<IValidateDataItem | null>(
-        validate || null
-    ) // для отслеживания изменений в поле ввода
+    // const [validData, setValidData] = useState<IValidateDataItem | null>(
+    //     validate || null
+    // ) // для отслеживания изменений в поле ввода
 
     function changeInput(e: ChangeEvent<HTMLInputElement>) {
         onChange(e.target.value)
 
-        if (validate) {
-            Object.assign(validate, { value: e.target.value })
-            setValidData({ ...validate })
-
-            firstFocus && setIsValid(!!validator?.validateExec(validate))
-        }
+        // if (validate) {
+        //     Object.assign(validate, { value: e.target.value })
+        //     setValidData({ ...validate })
+        //
+        //     firstFocus && setIsValid(!!validator?.validateExec(validate))
+        // }
     }
 
     /**
@@ -80,12 +80,18 @@ export default function Inputin({
             setFirstFocus(true)
         }
 
-        // eslint-disable-next-line
-    }, [validateExec, validData])
+    }, [validateExec, validate])
+
+    useEffect(() => {
+        if (validate && firstFocus) {
+            Object.assign(validate, { value: value })
+            setIsValid(!!validator?.validateExec(validate))
+        }
+    }, [value])
 
     return (
         <div className="input-group mb-3">
-            <span className="input-group-text" id="basic-addon1">
+            <span className="input-group-text" id="basic-addon">
                 {title}
             </span>
             <input
@@ -93,7 +99,7 @@ export default function Inputin({
                 className={`form-control ${setClassName()}`}
                 placeholder={placeholder}
                 aria-label={placeholder}
-                aria-describedby="basic-addon1"
+                aria-describedby="basic-addon"
                 value={value}
                 onChange={changeInput}
                 onBlur={onBlurHandler}

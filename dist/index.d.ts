@@ -17,7 +17,7 @@ export declare class Inputin extends React.Component<IPropsInputin, any> { }
 export interface IValidateDataItem {
     value: string
     methods: Function[]
-    isValid: boolean
+    isValid?: boolean
 }
 
 export interface IMethods {

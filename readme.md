@@ -28,16 +28,14 @@ export default function LoginPage() {
             methods: [
                 ValidatorClass.methods.required,
                 ValidatorClass.methods.minLength(4),
-            ],
-            isValid: false,
+            ]
         },
         {
             value: password,
             methods: [
                 ValidatorClass.methods.required,
                 ValidatorClass.methods.maxLength(8),
-            ],
-            isValid: false,
+            ]
         },
     ]
 
