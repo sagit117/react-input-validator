@@ -1,7 +1,7 @@
 {
   "name": "react-inputin-validator",
-  "version": "1.0.33",
-  "description": "Валидатор полей ввода для реакт приложения",
+  "version": "1.0.34",
+  "description": "Валидатор полей ввода для react приложения",
   "author": "Pavel Aksenov <sagit117@gmail.com>",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",

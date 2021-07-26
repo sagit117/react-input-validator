@@ -25,6 +25,7 @@ export interface IMethods {
     minLength(length: number): Function         // минимальная длина поля
     maxLength(length: number): Function         // максимальная длина поля
     setIsValid(isValid: boolean): boolean       // принудительная валидация
+    isEmail(value: string): boolean             // проверка на email
 }
 
 /**
