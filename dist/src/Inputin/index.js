@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-export default function Inputin({ title, placeholder, type, value, onChange, validate, validator, validateExec, onKeyPress }) {
+export default function Inputin({ title, placeholder, type, value, onChange, validate, validator, validateExec, onKeyPress, setIsInvalid, }) {
     const [isValid, setIsValid] = useState(false);
     const [firstFocus, setFirstFocus] = useState(false);
     function changeInput(e) {
@@ -15,6 +15,11 @@ export default function Inputin({ title, placeholder, type, value, onChange, val
         }
         return '';
     }
+    useEffect(() => {
+        if (setIsInvalid === false || setIsInvalid === true) {
+            setIsValid(setIsInvalid);
+        }
+    }, [setIsInvalid]);
     useEffect(() => {
         if (validate && validateExec) {
             setIsValid(!!(validator === null || validator === void 0 ? void 0 : validator.validateExec(validate)));
