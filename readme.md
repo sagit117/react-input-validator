@@ -116,5 +116,21 @@ export default function LoginPage() {
 .input-group {}
 ```
 
+### Описание параметров
+
+Компонент input с валидацией
+* @param title - подпись элемента, может быть компонентом
+* @param placeholder - стандартный placeholder
+* @param type - тип input (text, password ...)
+* @param value - значение
+* @param onChange - метод изменения значения
+* @param validate - объект валидации
+* @param validator - инстанс класса валидации
+* @param validateExec - флаг, который определяет был ли из вне запрос валидации
+* @param onKeyPress - обработчик нажатия кнопки
+* @param isInvalid - параметр для принудительной окраски в валидное или не валидное значение
+
+  
+
 
 

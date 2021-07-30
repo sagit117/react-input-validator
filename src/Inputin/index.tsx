@@ -11,6 +11,7 @@ interface IPropsInputin {
     validator?: Validator
     validateExec?: boolean
     onKeyPress?: React.KeyboardEventHandler<HTMLInputElement>
+    setIsInvalid?: boolean
 }
 
 /**
@@ -24,6 +25,7 @@ interface IPropsInputin {
  * @param validator     - инстанс класса валидации
  * @param validateExec  - флаг, который определяет был ли из вне запрос валидации
  * @param onKeyPress    - обработчик нажатия кнопки
+ * @param isInvalid     - параметр для принудительной окраски в валидное или не валидное значение
  * @constructor
  */
 export default function Inputin({
@@ -35,7 +37,8 @@ export default function Inputin({
     validate,
     validator,
     validateExec,
-    onKeyPress
+    onKeyPress,
+    setIsInvalid,
 }: IPropsInputin) {
     const [isValid, setIsValid] = useState<boolean>(false)
     const [firstFocus, setFirstFocus] = useState<boolean>(false) // флаг отвечает за потерю фокуса
@@ -62,6 +65,12 @@ export default function Inputin({
 
         return ''
     }
+
+    useEffect(() => {
+        if (setIsInvalid === false || setIsInvalid === true) {
+            setIsValid(setIsInvalid)
+        }
+    }, [setIsInvalid])
 
     useEffect(() => {
         if (validate && validateExec) {
