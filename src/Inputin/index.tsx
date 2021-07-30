@@ -60,18 +60,17 @@ export default function Inputin({
      * Установка класса валидации
      */
     useEffect(() => {
+        if (setIsInvalid === false || setIsInvalid === true) {
+            setClassNames(!setIsInvalid ? 'is-valid' : 'is-invalid')
+            return
+        }
+
         if (validate && firstFocus) {
             setClassNames(isValid ? 'is-valid' : 'is-invalid')
         } else {
             setClassNames('')
         }
-    }, [isValid, validate, firstFocus])
-
-    useEffect(() => {
-        if (setIsInvalid === false || setIsInvalid === true) {
-            setIsValid(setIsInvalid)
-        }
-    }, [setIsInvalid])
+    }, [isValid, validate, firstFocus, setIsInvalid])
 
     useEffect(() => {
         if (validate && validateExec) {

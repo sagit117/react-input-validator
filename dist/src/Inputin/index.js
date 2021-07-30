@@ -11,18 +11,17 @@ export default function Inputin({ title, placeholder, type, value, onChange, val
         validate && setIsValid(!!(validator === null || validator === void 0 ? void 0 : validator.validateExec(validate)));
     }
     useEffect(() => {
+        if (setIsInvalid === false || setIsInvalid === true) {
+            setClassNames(!setIsInvalid ? 'is-valid' : 'is-invalid');
+            return;
+        }
         if (validate && firstFocus) {
             setClassNames(isValid ? 'is-valid' : 'is-invalid');
         }
         else {
             setClassNames('');
         }
-    }, [isValid, validate, firstFocus]);
-    useEffect(() => {
-        if (setIsInvalid === false || setIsInvalid === true) {
-            setIsValid(setIsInvalid);
-        }
-    }, [setIsInvalid]);
+    }, [isValid, validate, firstFocus, setIsInvalid]);
     useEffect(() => {
         if (validate && validateExec) {
             setIsValid(!!(validator === null || validator === void 0 ? void 0 : validator.validateExec(validate)));
