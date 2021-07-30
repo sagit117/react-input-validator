@@ -42,6 +42,7 @@ export default function Inputin({
 }: IPropsInputin) {
     const [isValid, setIsValid] = useState<boolean>(false)
     const [firstFocus, setFirstFocus] = useState<boolean>(false) // флаг отвечает за потерю фокуса
+    const [classNames, setClassNames] = useState<string>('')
 
     function changeInput(e: ChangeEvent<HTMLInputElement>) {
         onChange(e.target.value)
@@ -58,13 +59,13 @@ export default function Inputin({
     /**
      * Установка класса валидации
      */
-    function setClassName(): string {
+    useEffect(() => {
         if (validate && firstFocus) {
-            return isValid ? 'is-valid' : 'is-invalid'
+            setClassNames(isValid ? 'is-valid' : 'is-invalid')
+        } else {
+            setClassNames('')
         }
-
-        return ''
-    }
+    }, [isValid, validate, firstFocus])
 
     useEffect(() => {
         if (setIsInvalid === false || setIsInvalid === true) {
@@ -94,7 +95,7 @@ export default function Inputin({
             </span>
             <input
                 type={type}
-                className={`form-control ${setClassName()}`}
+                className={`form-control ${classNames}`}
                 placeholder={placeholder}
                 aria-label={placeholder}
                 aria-describedby="basic-addon"

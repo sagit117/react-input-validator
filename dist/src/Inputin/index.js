@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 export default function Inputin({ title, placeholder, type, value, onChange, validate, validator, validateExec, onKeyPress, setIsInvalid, }) {
     const [isValid, setIsValid] = useState(false);
     const [firstFocus, setFirstFocus] = useState(false);
+    const [classNames, setClassNames] = useState('');
     function changeInput(e) {
         onChange(e.target.value);
     }
@@ -9,12 +10,14 @@ export default function Inputin({ title, placeholder, type, value, onChange, val
         setFirstFocus(true);
         validate && setIsValid(!!(validator === null || validator === void 0 ? void 0 : validator.validateExec(validate)));
     }
-    function setClassName() {
+    useEffect(() => {
         if (validate && firstFocus) {
-            return isValid ? 'is-valid' : 'is-invalid';
+            setClassNames(isValid ? 'is-valid' : 'is-invalid');
         }
-        return '';
-    }
+        else {
+            setClassNames('');
+        }
+    }, [isValid, validate, firstFocus]);
     useEffect(() => {
         if (setIsInvalid === false || setIsInvalid === true) {
             setIsValid(setIsInvalid);
@@ -34,5 +37,5 @@ export default function Inputin({ title, placeholder, type, value, onChange, val
     }, [value]);
     return (React.createElement("div", { className: "input-group mb-3" },
         React.createElement("span", { className: "input-group-text", id: "basic-addon" }, title),
-        React.createElement("input", { type: type, className: `form-control ${setClassName()}`, placeholder: placeholder, "aria-label": placeholder, "aria-describedby": "basic-addon", value: value, onChange: changeInput, onBlur: onBlurHandler, onKeyPress: onKeyPress })));
+        React.createElement("input", { type: type, className: `form-control ${classNames}`, placeholder: placeholder, "aria-label": placeholder, "aria-describedby": "basic-addon", value: value, onChange: changeInput, onBlur: onBlurHandler, onKeyPress: onKeyPress })));
 }
